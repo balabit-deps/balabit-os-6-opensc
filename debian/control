@@ -1,0 +1,77 @@
+Source: opensc
+Priority: extra
+Section: utils
+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>
+XSBC-Original-Maintainer: Debian OpenSC Maintainers <pkg-opensc-maint@lists.alioth.debian.org>
+Uploaders: Eric Dorland <eric@debian.org>
+Build-Depends: debhelper (>= 9),
+               dh-autoreconf,
+               docbook-xsl,
+               flex,
+               libltdl3-dev,
+               libpcsclite-dev (>= 1.2.9-beta1),
+               libreadline-dev,
+               libssl-dev (>= 0.9.7d-3),
+               pkg-config,
+               xsltproc,
+               zlib1g-dev
+Standards-Version: 3.9.6
+Homepage: https://github.com/OpenSC/OpenSC/wiki
+Vcs-Git: git://anonscm.debian.org/pkg-opensc/opensc.git
+Vcs-Browser: http://anonscm.debian.org/gitweb/?p=pkg-opensc/opensc.git
+
+Package: opensc
+Section: utils
+Architecture: any
+Multi-Arch: foreign
+Pre-Depends: ${misc:Pre-Depends}
+Depends: opensc-pkcs11 (= ${binary:Version}),
+         pcscd,
+         ${misc:Depends},
+         ${shlibs:Depends}
+Conflicts: mozilla-opensc
+Description: Smart card utilities with support for PKCS#15 compatible cards
+ OpenSC provides a set of libraries and utilities to access smart
+ cards.  It mainly focuses on cards that support cryptographic
+ operations. It facilitates their use in security applications such as
+ mail encryption, authentication, and digital signature. OpenSC
+ implements the PKCS#11 API. Applications supporting this API, such as
+ Iceweasel and Icedove, can use it. OpenSC implements the PKCS#15
+ standard and aims to be compatible with all software that does so as
+ well.
+ .
+ Before purchasing any cards, please read carefully documentation in
+ /usr/share/doc/opensc/html/wiki/index.html - only some cards are
+ supported. Not only does card type matters, but also card version,
+ card OS version and preloaded applet. Only a subset of possible
+ operations may be supported for your card. Card initialization may
+ require third party proprietary software.
+ .
+ This package contains tools for intearacting with smart cards.
+
+Package: opensc-pkcs11
+Section: utils
+Architecture: any
+Multi-Arch: same
+Pre-Depends: ${misc:Pre-Depends}
+Depends: ${misc:Depends}, ${shlibs:Depends}
+Replaces: libopensc2 (<< 0.12.0), opensc (<< 0.13.0-5~)
+Breaks: libopensc2 (<< 0.12.0), opensc (<< 0.13.0-5~)
+Description: Smart card utilities with support for PKCS#15 compatible cards
+ OpenSC provides a set of libraries and utilities to access smart
+ cards.  It mainly focuses on cards that support cryptographic
+ operations. It facilitates their use in security applications such as
+ mail encryption, authentication, and digital signature. OpenSC
+ implements the PKCS#11 API. Applications supporting this API, such as
+ Iceweasel and Icedove, can use it. OpenSC implements the PKCS#15
+ standard and aims to be compatible with all software that does so as
+ well.
+ .
+ Before purchasing any cards, please read carefully documentation in
+ /usr/share/doc/opensc/html/wiki/index.html - only some cards are
+ supported. Not only does card type matters, but also card version,
+ card OS version and preloaded applet. Only a subset of possible
+ operations may be supported for your card. Card initialization may
+ require third party proprietary software.
+ .
+ This package contains the pkcs11 module.
